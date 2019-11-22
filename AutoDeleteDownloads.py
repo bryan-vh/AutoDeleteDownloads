@@ -3,6 +3,7 @@ from datetime import datetime
 
 
 def remove_download_files(downloads, now, retain):
+    # Numbers to keep track of how many files removed and total that can be removed
     removed = 0
     total = 0
 
@@ -20,6 +21,7 @@ def remove_download_files(downloads, now, retain):
                 birth_time_ts = stat.st_birthtime
                 birth_time = datetime.fromtimestamp(birth_time_ts)
 
+                # Get number of days difference between current time and birth time for file
                 diff = now - birth_time
 
                 if diff.days > retain:
